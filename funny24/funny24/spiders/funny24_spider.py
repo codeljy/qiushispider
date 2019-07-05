@@ -52,7 +52,7 @@ class funny24(scrapy.Spider):
         self.log('保存文件：%s' % filename)
 
     def detail_parse(self, response):
-        time.sleep(math.floor(random.random()*3+1)) # 随机睡眠1-3秒
+        time.sleep(math.floor(random.random()*3+1)) # 随机睡眠1-3秒 
         self.saveDetailHtml(response) # 存储详情html文件
         self.analysisHtml(response) # 解析html，保存数据到mysql
 
