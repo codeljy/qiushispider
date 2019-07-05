@@ -58,6 +58,7 @@ ROBOTSTXT_OBEY = True
 DOWNLOADER_MIDDLEWARES = {
     'scrapy.contrib.downloadermiddleware.useragent.UserAgentMiddleware': None,
     'funny24.middlewares.RotateUserAgentMiddleware': 400,
+    'funny24.middlewares.RandomIpAddressMiddleware':543
 }
 
 USER_AGENT_LIST = [

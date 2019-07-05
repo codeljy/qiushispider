@@ -106,6 +106,7 @@ class Funny24DownloaderMiddleware(object):
 from scrapy.downloadermiddlewares.useragent import UserAgentMiddleware
 import random
 from .settings import USER_AGENT_LIST
+from scrapy import signals
 
 class RotateUserAgentMiddleware(UserAgentMiddleware):
 
@@ -114,3 +115,17 @@ class RotateUserAgentMiddleware(UserAgentMiddleware):
         if user_agent:
             request.headers.setdefault('User-Agent', user_agent)
             print(f"User-Agent:{user_agent}")
+
+class RandomIpAddressMiddleware(object):
+
+    def __init__(self, ip):
+        self.ip = ip
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        ip = None
+        return cls(ip=ip)
+
+    def process_request(self,request,spider):
+        ip = random.choice(self.ip)
+        request.meta['proxy'] = 'https://117.139.126.236:53281'
